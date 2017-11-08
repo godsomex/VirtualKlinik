@@ -1,0 +1,33 @@
+{
+  "name": "virtualklinik",
+  "version": "1.0.0",
+  "description": "virtualKlinik is a MEAN stack application to help bridge the gap between the medical practitioners and patients ",
+  "main": "server.js ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/godsomex/VirtualKlinik.git"
+  },
+  "keywords": [
+    "MEAN",
+    "--",
+    "MonogoDb",
+    "Express",
+    "Angular",
+    "NodeJs",
+    "with",
+    "Websocket--socket.io"
+  ],
+  "author": "Emmanuel,Kwabena, Prince, Uche, Godspower",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/godsomex/VirtualKlinik/issues"
+  },
+  "homepage": "https://github.com/godsomex/VirtualKlinik#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "socket.io": "^2.0.4"
+  }
+}
