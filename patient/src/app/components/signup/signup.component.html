@@ -1,0 +1,36 @@
+<div class="container col-lg-5">
+  <!-- helps to display success or errors on form submission -->
+  <div class="row show-message">
+      <div [ngClass] = "messageClass">
+        {{message}}
+      </div>
+   </div>
+
+  <form [formGroup]= "form" (submit)="onSignup()" id="contact-form" >
+    <fieldset>
+      <div class="form-group form-group-fullname">
+        <label class="control-label" for="fullname">USER NAME *</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter Your UserName" formControlName = "username" /> 
+      </div>
+      <div class="form-group form-group-email">
+        <label class="control-label" for="email">E-MAIL *</label>
+        <input type="text" class="form-control" name="email" id="email" placeholder="Enter Your E-Mail" formControlName = "email" />
+      </div>
+      <div class="form-group form-group-message">
+        <label class="control-label" for="message">PASSWORD *</label>
+        <input type="text" class="form-control" name="password" id="password" formControlName = "password" />
+      </div>
+      <div class="form-group form-group-message">
+        <label class="control-label" for="message">CONFIRM PASSWORD *</label>
+        <input type="text" class="form-control" name="confirm_password" id="confirm_password" formControlName = "confirm_password" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+  </form>
+
+ <p>username : {{form.controls.username.value}}</p> 
+<p>email : {{form.controls.email.value}}</p>
+<p>username : {{form.controls.password.value}}</p>
+<p>username : {{form.controls.confirm_password.value}}</p>
+
+</div>
