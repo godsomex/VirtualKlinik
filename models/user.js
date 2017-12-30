@@ -12,7 +12,7 @@ const userSchema = new Schema({
     password: { type: String, required: true, unique: true, lowercase: true },
 }, {timestamps: true});
 
-UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+userSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
 userSchema.pre('save',function (next) {
     if (!this.isModified('password')) 
