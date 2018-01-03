@@ -9,11 +9,12 @@ const bcrypt = require('bcrypt-nodejs')
 const userSchema = new Schema({
     email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
     username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
-    password: { type: String, required: true, unique: true, lowercase: true },
+    password: { type: String, required: true, unique: true},
 }, {timestamps: true});
 
 userSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
+// to encrypt password
 userSchema.pre('save',function (next) {
     if (!this.isModified('password')) 
         return next();
@@ -23,5 +24,9 @@ userSchema.pre('save',function (next) {
         next();
     });
 });
+
+userSchema.methods.comparePassword = function (password) {
+    return bcrypt.compareSync(password, this.password); // Return comparison of login password to password in database (true or false)
+};
 
 module.exports = mongoose.model('User', userSchema);
