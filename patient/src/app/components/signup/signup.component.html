@@ -1,36 +1,49 @@
-<div class="container col-lg-5">
+<div class="container">
   <!-- helps to display success or errors on form submission -->
   <div class="row show-message">
-      <div [ngClass] = "messageClass">
-        {{message}}
+    <div style="text-align: center">
+      {{message}}
+    </div>
+  </div>
+  <form [formGroup]="form" (submit)="onSignup()" id="contact-form" class="container" style="max-width:550px; border:1px solid #ccc">
+    <div class="container formBox">
+      <div class="form-group ">
+        <label class="control-label" for="fullname">
+          <b>Username</b>
+        </label>
+        <input type="text" class="form-control" placeholder="Enter Your Username" id="username" name="username" formControlName="username"
+          required>
+        <label class="control-label" for="email">
+          <b>Email</b>
+        </label>
+        <input type="text" class="form-control" placeholder="Enter Email" id="email" name="email" formControlName="email" required>
+        <label class="control-label" for="message">
+          <b>Password</b>
+        </label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="password" id="password" formControlName="password"
+          required>
+        <label class="control-label" for="message">
+          <b>Repeat Password</b>
+        </label>
+        <input type="password" placeholder="Repeat Password" class="form-control" name="confirm_password" id="confirm_password" formControlName="confirm_password"
+          required>
+        <p>By creating an account you agree to our
+          <a href="#">Terms & Privacy</a>.</p>
       </div>
-   </div>
-
-  <form [formGroup]= "form" (submit)="onSignup()" id="contact-form" >
-    <fieldset>
-      <div class="form-group form-group-fullname">
-        <label class="control-label" for="fullname">USER NAME *</label>
-        <input type="text" class="form-control" name="username" id="username" placeholder="Enter Your UserName" formControlName = "username" /> 
+      <div class="clearfix">
+        <div>
+          <button type="submit" class="btn btn-primary signupbtn">Sign Up</button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary cancelbtn">Cancel</button>
+        </div>
       </div>
-      <div class="form-group form-group-email">
-        <label class="control-label" for="email">E-MAIL *</label>
-        <input type="text" class="form-control" name="email" id="email" placeholder="Enter Your E-Mail" formControlName = "email" />
-      </div>
-      <div class="form-group form-group-message">
-        <label class="control-label" for="message">PASSWORD *</label>
-        <input type="text" class="form-control" name="password" id="password" formControlName = "password" />
-      </div>
-      <div class="form-group form-group-message">
-        <label class="control-label" for="message">CONFIRM PASSWORD *</label>
-        <input type="text" class="form-control" name="confirm_password" id="confirm_password" formControlName = "confirm_password" />
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
+    </div>
   </form>
 
- <p>username : {{form.controls.username.value}}</p> 
-<p>email : {{form.controls.email.value}}</p>
-<p>username : {{form.controls.password.value}}</p>
-<p>username : {{form.controls.confirm_password.value}}</p>
+  <p>username: {{form.controls.username.value}}</p>
+  <p>email: {{form.controls.email.value}}</p>
+  <p>password: {{form.controls.password.value}}</p>
+  <p>confirm password: {{form.controls.confirm_password.value}}</p>
 
 </div>
