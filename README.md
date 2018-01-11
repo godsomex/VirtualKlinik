@@ -1,6 +1,6 @@
 "# VirtualKlinik is a MEAN stack application that will bridge the gap between medical practitioners and patients" 
 
- clone the repo
+ "#clone the repo "
  cd into virtualklinik
  run 'npm install'
  cd into patient (angular part)
