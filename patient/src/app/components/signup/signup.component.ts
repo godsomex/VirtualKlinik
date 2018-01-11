@@ -35,11 +35,8 @@ export class SignupComponent implements OnInit {
   };
     this.regauthService.signupUser(user).subscribe(data => {
       console.log(data);
-
-      if (data.sucess) {
-        this.messageClass = 'alert alert-danger';
+        this.messageClass = 'alert alert-success';
         this.message = data.message;
-      }
     });
   }
 
