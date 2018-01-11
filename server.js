@@ -8,6 +8,11 @@ const registration = require('./routes/registration')(router);
 const bodyParser = require('body-parser')
 const cors = require('cors')// cross origin middleware needed because we are developing on two servers 
 
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+
+const chat = require('./routes/chat');
+
 //orm connection 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -28,7 +33,7 @@ app.use(cors({
     origin: 'http://localhost:4200'
 }))
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json())
@@ -41,6 +46,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/patient/dist/index.html'));
    // res.sendFile(path.join(__dirname + '/public/index.html'));
 });
+
+
+app.use('/chat', chat);//handles localhost:9000/chat
 
 const io = socket(server);
 

@@ -59,5 +59,45 @@ module.exports = (router) =>{ //passing in our express router as argument
         }
 
     });
+
+//middleware method/token used to grab token from user's header 
+    router.use((req, res, next) => {
+        const token = req.headers['authorization']; 
+        if (!token) {
+            res.json({ success: false, message: 'No token provided' });
+        } else {
+            jwt.verify(token, settings.secret, (err, decoded) => {
+                
+                if (err) {
+                    res.json({ success: false, message: 'invalid token: ' + err }); 
+                } else {
+                    req.decoded = decoded; // Create global variable to use in any request beyond
+                    next(); // Exit middleware
+                }
+            });
+        }
+    });
+
+    router.get('/profile', (req, res) => {
+        // method to search for a user in the database 
+        User.findOne({ _id: req.decoded.userId }).select('username email').exec((err, user) => {
+           
+            if (err) {
+                res.json({ success: false, message: err }); // Return error
+            } else {
+                // Check if user was found in database
+                if (!user) {
+                    res.json({ success: false, message: 'User not found' }); // Return error, user was not found in db
+                } else {
+                    res.json({ success: true, user: user }); // Return success, send user object to frontend for profile
+                }
+            }
+        });
+    });
     return router; //this is how we return our api routes 
+
+    //app.use('/chat', chat);
+
+
+
 }
