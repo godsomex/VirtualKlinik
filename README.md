@@ -8,4 +8,4 @@
  'ng buidl' to build the project
  cd ..
  run 'node server.js' to start the project
- 
+ navigate to localhost:9000 
