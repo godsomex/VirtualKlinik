@@ -1,4 +1,4 @@
-<div class="container col-lg-5">
+<div class="container">
   <!-- helps to display success or errors on form submission -->
   <div class="row show-message">
     <div [ngClass]="messageClass">
@@ -6,24 +6,26 @@
     </div>
   </div>
 
-  <form [formGroup]="form" (submit)="onlogin()" id="contact-form">
-    <fieldset>
+  <form [formGroup]="form" (submit)="onlogin()" id="contact-form" class="container" style="max-width:550px; border:1px solid #ccc">
+    <fieldset class="formBox">
       <div class="form-group form-group-fullname">
-        <label class="control-label" for="fullname">USER NAME *</label>
-        <input type="text" class="form-control" name="username" id="username" placeholder="Enter Your UserName" formControlName="username"
-        />
+        <label class="control-label" for="fullname">
+          <b>Username</b>
+        </label>
+        <input type="text" class="form-control" placeholder="Enter Your Username" id="username" name="username" formControlName="username"
+          required>
+        <label class="control-label" for="message">
+          <b>Password</b>
+        </label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="password" id="password" formControlName="password"
+          required>
       </div>
 
-      <div class="form-group form-group-message">
-        <label class="control-label" for="message">PASSWORD *</label>
-        <input type="text" class="form-control" name="password" id="password" formControlName="password" />
-      </div>
-
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="submitbtn btn btn-primary">Login</button>
     </fieldset>
   </form>
 
-  <p>username : {{form.controls.username.value}}</p>
-  <p>password : {{form.controls.password.value}}</p>
+  <p>username: {{form.controls.username.value}}</p>
+  <p>password: {{form.controls.password.value}}</p>
 
 </div>
