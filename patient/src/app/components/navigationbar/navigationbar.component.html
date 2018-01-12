@@ -19,40 +19,36 @@
     <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav pull-right">
         <li class="active">
-
           <a routerLink="/home" routerLinkActive="active">Home</a>
         </li>
         <li>
-          <a href="about.html">About</a>
+          <a routerLink="/about">About</a>
         </li>
         <li>
-          <a href="blog.html">Blog</a>
+          <a routerLink="/forum">Forum</a>
         </li>
-        <li>
-          <a href="team.html">Team</a>
-        </li>
-        <li>
-          <a href="contact.html">
-            <span>Contact</span>
+        <li *ngIf="regauthservice.loggedIn()">
+          <a routerLink="/chatbot">
+            <span>Vikky</span>
           </a>
         </li>
-        <li>
+        <li *ngIf="!regauthservice.loggedIn()">
           <a routerLink="/signup">
             <span>Signup</span>
           </a>
         </li>
-        <li>
-          <a href="login.html">
+        <li *ngIf="!regauthservice.loggedIn()">
+          <a routerLink="/login">
             <span>Login</span>
           </a>
         </li>
-        <li>
-          <a href="chat.html">
+        <li *ngIf="regauthservice.loggedIn()">
+          <a routerLink="/chat">
             <span>Chat</span>
           </a>
         </li>
-        <li>
-          <a href="predict.html">
+        <li *ngIf="regauthservice.loggedIn()">
+          <a routerLink="predict">
             <span>Predict</span>
           </a>
         </li>
@@ -60,5 +56,11 @@
     </div>
   </div>
 </nav>
-
+<div class="copyright text center" *ngIf="regauthservice.loggedIn()">
+        <p>
+          <strong><a routerLink="/profile">View Profile</a></strong>
+          <strong>|</strong>
+          <strong><a href="#" (click)= "onLogoutClick()">Logout</a></strong>
+        </p>
+  </div>
 <!-- End of navigation bar -->
