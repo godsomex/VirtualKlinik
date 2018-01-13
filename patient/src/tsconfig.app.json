@@ -9,5 +9,10 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
+  ],
+  "include": [
+    "../node_modules/api-ai-javascript/index.ts",
+    "./main.ts",
+    "./polyfills.ts"
   ]
 }
